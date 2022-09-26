@@ -77,16 +77,8 @@ contract BuyMeACoffee {
     }
 
     function withdrawAdjuster (address payable newWithdrawAddress) public {
+        //make sure that only the owner can call this contract
         require(owner == msg.sender, 'You are not the owner so you cant change the withdrawal address');
+        //get the given address and send the balance over to it. 
         require(newWithdrawAddress.send(address(this).balance));
     }
-
-    //function withdrawChange() public {
-    //    require(openzeppelin.onlyOwner()) or isOwner()  is true 
-    //    console.log("current owner is" + owner())
-    // require that the one who calls this function is the owner of the contract
-    // set the address received as the new address
-    // require(owner.send(address(this) == owner));
-
-    // }
-}
